@@ -1,0 +1,50 @@
+#ifndef PERMIT
+#define PERMIT
+#include <iostream>
+#include <conio.h>
+#include <cassert>
+#include <string>
+#include "AppForm.h"
+#include "co19.h"
+
+class Permit
+{
+	ApplicationFrm Form1;
+	Covid19Evaluation testCOVI19;
+	int Permit_ID;
+	
+	public :
+		Permit (int ID, ApplicationFrm frm, Covid19Evaluation test);
+		
+		~Permit ();
+		
+		void print () const;
+	
+};
+#endif
+
+
+
+
+#include "pmit.h"
+
+Permit :: Permit (int ID, ApplicationFrm frm, Covid19Evaluation test)
+{	
+	Form1 = frm;
+	testCOVI19 = test;
+	Permit_ID = ID;
+	assert(Permit_ID>0 and Permit_ID<100);
+}
+
+Permit :: ~Permit ()
+{
+	cout <<"\nPermit destroy\n";
+}
+
+void Permit :: print () const
+{
+	cout <<"Permit ID is : "<<Permit_ID<<endl;
+	Form1.print();
+	cout<<endl;
+	testCOVI19.print ();
+}
